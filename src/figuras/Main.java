@@ -1,4 +1,3 @@
-
 package figuras;
 
 import figuras.Circulo;
@@ -9,7 +8,9 @@ import figuras.Triangulo;
  * @author b6
  */
 public class Main extends javax.swing.JFrame {
+
     private int figure;
+
     /**
      * Creates new form Main
      */
@@ -22,14 +23,41 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void circuloActionPerformed(java.awt.event.ActionEvent evt) {
-        if(evt.getSource().equals(mniCirculo)){
+        if (evt.getSource().equals(mniCirculo)) {
             figure = 0;
             lblAltura.setVisible(false);
             txtAltura.setVisible(false);
             lblRadio.setText("Radio");
         }
     }
-    
+
+    private void mniCuadradoActionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource().equals(mniCuadrado)) {
+            figure = 1;
+            lblAltura.setVisible(false);
+            txtAltura.setVisible(false);
+            lblRadio.setText("Lado");
+        }
+    }
+
+    private void btnDibujarActionPerformed(java.awt.event.ActionEvent evt) {
+        Circulo circulo;
+        Cuadrado cuadrado;
+        if (figure == 0) {
+            circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
+            txtPerimetro.setText(Float.toString(circulo.Perimetro()));
+            txtArea.setText(Float.toString(circulo.Area()));
+            circulo.drawFigure(pnlCanvas.getGraphics());
+
+        } else if (figure == 1) {
+            cuadrado = new Cuadrado(Integer.parseInt(txtRadio.getText()));
+            txtPerimetro.setText(Float.toString(cuadrado.Perimetro()));
+            txtArea.setText(Float.toString(cuadrado.Area()));
+            cuadrado.drawFigure(pnlCanvas.getGraphics());
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,7 +260,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRadioActionPerformed
 
     private void mniTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTrianguloActionPerformed
-        if(evt.getSource().equals(mniTriangulo)){
+        if (evt.getSource().equals(mniTriangulo)) {
             figure = 1;
             lblAltura.setVisible(true);
             txtAltura.setVisible(true);
@@ -243,13 +271,13 @@ public class Main extends javax.swing.JFrame {
     private void btnDibujarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDibujarActionPerformed
         Circulo circulo;
         Triangulo triangulo;
-        if (figure == 0){
+        if (figure == 0) {
             circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
             txtPerimetro.setText(Float.toString(circulo.Perimetro()));;
             txtArea.setText(Float.toString(circulo.Area()));
             circulo.drawFigure(pnlCanvas.getGraphics());
-        } else if (figure == 1){
-            triangulo = new Triangulo (Integer.parseInt(txtRadio.getText()), Integer.parseInt(txtAltura.getText()));
+        } else if (figure == 1) {
+            triangulo = new Triangulo(Integer.parseInt(txtRadio.getText()), Integer.parseInt(txtAltura.getText()));
             txtPerimetro.setText(Float.toString(triangulo.Perimetro()));
             txtArea.setText(Float.toString(triangulo.Area()));
             triangulo.drawFigure(pnlCanvas.getGraphics());
