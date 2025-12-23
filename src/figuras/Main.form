@@ -33,6 +33,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Triangulo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniTrianguloActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -198,6 +201,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Dibujar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDibujarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBorrar">
       <Properties>

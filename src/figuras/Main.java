@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package figuras;
+
+import figuras.Circulo;
+import figuras.Triangulo;
 
 /**
  *
@@ -30,13 +30,6 @@ public class Main extends javax.swing.JFrame {
         }
     }
     
-    private void btnDibujarActionPerformed(java.awt.event.ActionEvent evt) {
-        Circulo circulo;
-        circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
-        txtPerimetro.setText(Float.toString(circulo.Perimetro()));
-        txtArea.setText(Float.toString(circulo.Area()));
-        circulo.drawFigure(pnlCanvas.getGraphics());
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,6 +117,11 @@ public class Main extends javax.swing.JFrame {
         );
 
         btnDibujar.setText("Dibujar");
+        btnDibujar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDibujarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
 
@@ -175,6 +173,11 @@ public class Main extends javax.swing.JFrame {
 
         mniTriangulo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniTriangulo.setText("Triangulo");
+        mniTriangulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTrianguloActionPerformed(evt);
+            }
+        });
         mnuFiguras.add(mniTriangulo);
 
         mnbMain.add(mnuFiguras);
@@ -227,6 +230,31 @@ public class Main extends javax.swing.JFrame {
     private void txtRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRadioActionPerformed
+
+    private void mniTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTrianguloActionPerformed
+        if(evt.getSource().equals(mniTriangulo)){
+            figure = 1;
+            lblAltura.setVisible(true);
+            txtAltura.setVisible(true);
+            lblRadio.setText("Base");
+        }
+    }//GEN-LAST:event_mniTrianguloActionPerformed
+
+    private void btnDibujarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDibujarActionPerformed
+        Circulo circulo;
+        Triangulo triangulo;
+        if (figure == 0){
+            circulo = new Circulo(Integer.parseInt(txtRadio.getText()));
+            txtPerimetro.setText(Float.toString(circulo.Perimetro()));;
+            txtArea.setText(Float.toString(circulo.Area()));
+            circulo.drawFigure(pnlCanvas.getGraphics());
+        } else if (figure == 1){
+            triangulo = new Triangulo (Integer.parseInt(txtRadio.getText()), Integer.parseInt(txtAltura.getText()));
+            txtPerimetro.setText(Float.toString(triangulo.Perimetro()));
+            txtArea.setText(Float.toString(triangulo.Area()));
+            triangulo.drawFigure(pnlCanvas.getGraphics());
+        }
+    }//GEN-LAST:event_btnDibujarActionPerformed
 
     /**
      * @param args the command line arguments
